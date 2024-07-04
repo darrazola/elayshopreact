@@ -1,17 +1,16 @@
 import React, { useEffect, useState, useContext } from 'react';
-import { useParams, Link } from 'react-router-dom';
-import { mockFetchItemsByCategory } from '../mockApi';
+import { Link } from 'react-router-dom';
+import { mockFetchAllItems } from '../mockApi';
 import { CartContext } from './CartContext';
 
-function ItemListContainer({ greeting }) {
-  const { id } = useParams();
+function Home() {
   const [items, setItems] = useState([]);
   const [quantities, setQuantities] = useState({});
   const { addToCart } = useContext(CartContext);
 
   useEffect(() => {
     const fetchItems = async () => {
-      const response = await mockFetchItemsByCategory(id);
+      const response = await mockFetchAllItems();
       setItems(response);
       const initialQuantities = response.reduce((acc, item) => {
         acc[item.id] = 1;
@@ -21,7 +20,7 @@ function ItemListContainer({ greeting }) {
     };
 
     fetchItems();
-  }, [id]);
+  }, []);
 
   const increaseQuantity = (itemId) => {
     setQuantities(prevQuantities => ({
@@ -42,8 +41,8 @@ function ItemListContainer({ greeting }) {
   };
 
   return (
-    <div className="container my-4">
-      <h2 className="display-4">{greeting}</h2>
+    <div className="container my-4 text-center">
+      <h2 className="display-4">Encuentra lo mejor en ElayShop</h2>
       <div className="row">
         {items.map(item => (
           <div className="col-4 mb-4" key={item.id}>
@@ -69,4 +68,4 @@ function ItemListContainer({ greeting }) {
   );
 }
 
-export default ItemListContainer;
+export default Home;

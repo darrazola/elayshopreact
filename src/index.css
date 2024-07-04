@@ -11,3 +11,44 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+body {
+  font-family: 'Arial', sans-serif;
+}
+
+h2.display-4 {
+  margin-bottom: 20px;
+}
+
+.card {
+  transition: transform 0.2s;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.btn-primary, .btn-success, .btn-secondary {
+  transition: background-color 0.2s, transform 0.2s;
+}
+
+.btn-primary:hover, .btn-success:hover, .btn-secondary:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+}
+
+.quantity-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px 0;
+}
+
+.quantity-controls .btn {
+  margin: 0 5px;
+}
+
+.quantity {
+  font-size: 1.2rem;
+  margin: 0 10px;
+}
